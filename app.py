@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 from code_reviewer import CodeReviewer
 from pdf_generator import create_pdf_report
@@ -277,3 +278,8 @@ st.markdown("---")
 st.caption(
     "AI Code Review Assistant | Streamlit + Gemini AI"
 )
+
+api_key = os.getenv("GEMINI_API_KEY")
+if not api_key:
+    st.error("Gemini API Key not found.")
+    st.stop()
